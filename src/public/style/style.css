@@ -1,0 +1,23 @@
+h1, p {
+
+text-align: center;
+}
+
+.logo {
+    width: 20%;
+    margin: auto;
+}
+
+.logo img {
+    width: 100%;
+}
+
+footer {
+    width: 100vw;
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    color: white;
+    padding: 5px;
+    z-index: 5;
+}
