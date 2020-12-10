@@ -44,22 +44,37 @@ class Model
         }
     }
 
-    // public function find($id) {
 
-    //     try {
-    //         $request = $this->handle->prepare('SELECT * FROM ads WHERE `ads_id` = :id');
-    //         $request->execute([':id' => $id]);
+    public function addNewCategory($name)
+    {
+        try {
+            $request = $this->handle->prepare('INSERT INTO category (category_name) VALUES (?)');
 
-    //         $data = $request->fetchAll();
+            $request->execute(array(
+                $name,
+            ));
+        } catch (PDOException $e) {
+            var_dump('Erreur lors de la requête SQL:' . $e->getMessage());
+        }
+    }
 
-    //         return $data;
+
+    public function findCategory($id) {
+
+        try {
+            $request = $this->handle->prepare('SELECT * FROM category WHERE `_id` = :id');
+            $request->execute([':id' => $id]);
+
+            $data = $request->fetchAll();
+
+            return $data;
             
-    //     } catch (PDOException $e) {
-    //         var_dump('Erreur lorsd e la requete SQL:' . $e->getMessage());
-    //     }
+        } catch (PDOException $e) {
+            var_dump('Erreur lorsd e la requete SQL:' . $e->getMessage());
+        }
 
 
-    // }
+    }
 
 
 }

@@ -1,15 +1,15 @@
-<?php include(__DIR__ . "./header.php");?>
+<?php include(__DIR__ . "./header.php"); ?>
 
-<?php if(isset($success)):?>
+<?php if (isset($success)) : ?>
     <div class="alert alert-success mt-5" role="alert">
         Votre film a été sauvegardé avec succes !
     </div>
-<?php endif;?>
+<?php endif; ?>
 
 
 
 <form action="?page=addfilm" method="post">
-<input type="hidden" name="success" value="1">
+    <input type="hidden" name="success" value="1">
 
     <div class="form-group mt-4">
         <label for="title">Titre du film</label>
@@ -25,6 +25,15 @@
         <label for="date">Année du film</label>
         <input type="number" step="1" name="date" class="form-control" id="price">
     </div>
+
+    <label for="pet-select">Choisir une catégorie</label>
+
+    <!-- Ajouter un foreach pour afficher les liste des category -->
+    
+    <select name="category" id="category">
+        <option value="">---</option>
+        <option value="dog">Humour</option>
+    </select>
 
     <button type="submit" class="btn btn-primary">Sauvegarder ce film</button>
 </form>

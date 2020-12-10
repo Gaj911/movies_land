@@ -29,6 +29,9 @@
                         <a class="menu nav-link" href="?page=addfilm">Ajouter un film</a>
                     </li>
                     <li class="nav-item">
+                        <a class="menu nav-link" href="?page=category">Ajouter une catégorie</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="menu nav-link" href="?page=listefilms">Consulter mes films</a>
                     </li>
                     <li class="nav-item">

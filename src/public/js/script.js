@@ -1,50 +1,38 @@
 window.onload = function () {
 
-    let btnsearch = document.querySelector('#btn_search');
+    let btnSearch = document.querySelector('#btn_search');
 
-    if (btnRefresh) {
+    if (btnSearch) {
 
-        btnsearch.addEventListener('click', searchdata);
-
+        btnSearch.addEventListener('click', searchMovies);
     }
 
-    function searchdata() {
+    function searchMovies() {
+
+        let inputData = document.querySelector('#name').value;
 
         let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "https://api.themoviedb.org/3/search/movie?api_key=6985e562c05ec6150e49c08a88da0226&language=fr&page=1&include_adult=false&query=${#btn_search}");      
+
+        xhttp.open("GET", "https://api.themoviedb.org/3/search/movie?api_key=c3568fa2093e83bc9999ba366802f9c7&language=fr&page=1&include_adult=false&query=" + inputData);
         xhttp.send();
 
         xhttp.onreadystatechange = function () {
 
             if (this.readyState === 4 && this.status === 200) {
-
                 let dataApi = JSON.parse(this.responseText);
                 console.log(dataApi);
-
-                let contentAds = document.querySelector('#list_movies');
-
+                let contentMovies = document.querySelector('#list_movies');
                 let html = '';
 
-                for (ad of dataApi) {
-
-                    html += '<div class="list_movie" id="list_movies">' +
-                            '<div class="movie">' +
-                            '<div class="img_movie">' +
-                            '<img src="https://image.tmdb.org/t/p/w500/' + ad.poster_path + '" alt="">' +
-                            '<p class="txt_movie"> ' + ad.original_title + ' </p>' +
-                            '</div>' +
-                            '</div>';
-            
+                for (movie of dataApi.results) {
+                    html += '       <div class="movie">' +
+                        '            <div class="img_movie"><img src="https://image.tmdb.org/t/p/w500/' + movie.poster_path + '" alt=""></div>' +
+                        '            <p class="txt_movie">' + movie.title + '</p>' +
+                        '        </div>'
                 }
-
-                contentAds.innerHTML = html;
-
+                
+                contentMovies.innerHTML = html;
             }
-
         }
     }
-
 }
-
-
-

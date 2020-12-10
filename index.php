@@ -4,6 +4,7 @@ require('src/controller/HomeController.php');
 require('src/controller/AddFilmController.php');
 require('src/controller/ListeFilmsController.php');
 require('src/controller/searchController.php');
+require('src/controller/CategoryController.php');
 require('src/model/Model.php');
 require('src/service/BddAcces.php');
 
@@ -17,6 +18,7 @@ $route = array(
     "addfilm" => AddFilmController::class,
     "listefilms" => ListeFilmsController::class,
     "search" => SearchController::class,
+    "category" => CategoryController::class,
 );
 
 foreach ($route as $routeValue => $classeName) {
